@@ -1,4 +1,4 @@
-package dp5;
+package dp_5;
 
 
 import javax.swing.*;
