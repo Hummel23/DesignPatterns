@@ -9,17 +9,20 @@ import java.util.Map;
 
 class Adapter {
 
-    private Fremdsystem fs;
-    Object[][] tableData;
 
+    private Fremdsystem fs;
+
+    Object[][] tableData;
     Adapter(String username, String password) {
-        this.fs = new Fremdsystem(username, password);
+        fs = new Fremdsystem(username, password);
+
     }
 
     Object[][] createTableData() {
         Map<Integer, String> allNames = getAllNamesFromFremdsystem();
         return convertNamesMapToObjectArray(allNames);
     }
+
 
     private  Object [][] convertNamesMapToObjectArray(Map<Integer, String> allNames) {
         tableData = new Object[allNames.size()][3];
@@ -54,5 +57,9 @@ class Adapter {
         }
         fs.close();
         return allNames;
+    }
+
+    public void setFs(Fremdsystem fs) {
+        this.fs = fs;
     }
 }
