@@ -16,7 +16,7 @@ class InverseInterval<T extends Comparable<T>> implements FilterStrategy <T> {
 
     @Override
     public List<T> filter(List<T> list, List<T> pattern) {
-        Preconditions.checkArgument(pattern.size()==2, String.format("The pattern list should have exactly two values, but has %s values", pattern.size()));
+        Preconditions.checkState(pattern.size()==2, String.format("The pattern list should have exactly two values, but has %s values", pattern.size()));
         Preconditions.checkArgument(pattern.get(0).compareTo(pattern.get(1)) < 0, String.format("The first value %s in the list should be smaller than the second %s.",
                 pattern.get(0), pattern.get(1)));
 
@@ -28,9 +28,9 @@ class InverseInterval<T extends Comparable<T>> implements FilterStrategy <T> {
 
     private  boolean acceptValue (T element, T lowerBound, T upperBound){
         if (isOpen) {
-            return element.compareTo(lowerBound) >= 0 && element.compareTo(upperBound) <= 0;
-        } else {
             return element.compareTo(lowerBound) > 0 && element.compareTo(upperBound) < 0;
+        } else {
+            return element.compareTo(lowerBound) >= 0 && element.compareTo(upperBound) <= 0;
         }
     }
 
