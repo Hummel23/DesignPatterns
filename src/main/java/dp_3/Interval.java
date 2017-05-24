@@ -5,14 +5,13 @@ import com.google.common.base.Preconditions;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class InverseInterval<T extends Comparable<T>> implements FilterStrategy <T> {
+class Interval<T extends Comparable<T>> implements FilterStrategy <T> {
 
     private boolean isOpen;
 
-    InverseInterval(boolean isOpen) {
+    Interval(boolean isOpen) {
         this.isOpen = isOpen;
     }
-
 
     @Override
     public List<T> filter(List<T> list, List<T> pattern) {
@@ -23,7 +22,7 @@ class InverseInterval<T extends Comparable<T>> implements FilterStrategy <T> {
         T lowerBound = pattern.get(0);
         T upperBound = pattern.get(1);
 
-        return list.stream().filter(t -> acceptValue(t, lowerBound, upperBound) == false).collect(Collectors.toList());
+        return list.stream().filter(t -> acceptValue(t, lowerBound, upperBound)).collect(Collectors.toList());
     }
 
     private  boolean acceptValue (T element, T lowerBound, T upperBound){
