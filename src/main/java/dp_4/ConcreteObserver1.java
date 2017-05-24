@@ -1,16 +1,14 @@
 package dp_4;
 
+
 import javax.swing.*;
 
-/**
- * Created by saba on 11.05.17.
- */
 public class ConcreteObserver1 extends JFrame implements Observer {
 
-    Integer state;
-    JLabel label;
+    private Integer state;
+    private JLabel label;
 
-    public ConcreteObserver1() {
+    ConcreteObserver1() {
         super("Observer 1");
         this.setSize(150, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

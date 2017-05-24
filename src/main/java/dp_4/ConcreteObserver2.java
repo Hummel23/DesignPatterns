@@ -2,9 +2,6 @@ package dp_4;
 
 import javax.swing.*;
 
-/**
- * Created by saba on 11.05.17.
- */
 public class ConcreteObserver2 extends JFrame implements Observer {
 
     Integer state;
