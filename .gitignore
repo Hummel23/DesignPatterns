@@ -1,8 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 DesignPatterns.iml
-target/*
 .idea/*
-
-
-
+out/
+target/
