@@ -2,8 +2,8 @@ package dp_6;
 
 public class Move {
 
-    Point startPoint;
-    Point endPoint;
+    private Point startPoint;
+    private Point endPoint;
 
 
     public Move(Point startPoint, Point endPoint) {
@@ -28,13 +28,31 @@ public class Move {
     }
 
     public boolean endPointIsWithinDistanceOfStartPoint() {
-        System.out.println("start point x: " + startPoint.getX());
-        System.out.println("end point x: " + endPoint.getX());
-
-        System.out.println("start point y: " + startPoint.getY());
-        System.out.println("end point y: " + endPoint.getY());
-        System.out.println(startPoint.getY() == endPoint.getY() + 2 || startPoint.getY() == endPoint.getY() -2);
         return (((startPoint.getX() == endPoint.getX() + 2 || startPoint.getX() == endPoint.getX() -2) && startPoint.getY() == endPoint.getY()) ||
                 (startPoint.getX() == endPoint.getX() && (startPoint.getY() == endPoint.getY() + 2 || startPoint.getY() == endPoint.getY() -2)));
+    }
+
+    public int getMiddlePointXValue() {
+        if (startPoint.getX() == endPoint.getX()) {
+            return startPoint.getX();
+        } else {
+            if (startPoint.getX() < endPoint.getX()) {
+                return startPoint.getX() + 1;
+            } else{
+                return startPoint.getX() - 1;
+            }
+        }
+    }
+
+    public int getMiddlePointYValue() {
+        if (startPoint.getY() == endPoint.getY()) {
+            return startPoint.getY();
+        }else{
+            if (startPoint.getY() < endPoint.getY()) {
+                return startPoint.getY() + 1;
+            } else {
+                return startPoint.getY() - 1;
+            }
+        }
     }
 }

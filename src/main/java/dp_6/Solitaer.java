@@ -1,6 +1,7 @@
 package dp_6;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,13 +16,8 @@ public class Solitaer {
     JButton undo, newGame;
 
     @Getter
+    @Setter
     Model model;
-
-    boolean moveStarted = false;
-    Point startPoint;
-    Point endPoint;
-
-
 
     Solitaer() {
         this.model = new Model();
@@ -41,17 +37,7 @@ public class Solitaer {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int row = 0; row < 7; row++)
-                    for (int col = 0; col < 7; col++)
-/*                        if (row == 0 && (col == 0 || col == 1 || col == 5 || col == 6)) model[row][col] = dp_6.State.NOT;
-                        else if (row == 1 && (col == 0 || col == 1 || col == 5 || col == 6))
-                            model[row][col] = State.NOT;
-                        else if (row == 5 && (col == 0 || col == 1 || col == 5 || col == 6))
-                            model[row][col] = State.NOT;
-                        else if (row == 6 && (col == 0 || col == 1 || col == 5 || col == 6))
-                            model[row][col] = State.NOT;
-                        else if (row == 3 && col == 3) model[row][col] = State.FREE;
-                        else model[row][col] = State.USED;*/
+                setModel(new Model());
                 mainPanel.repaint();
 
             }
@@ -64,10 +50,9 @@ public class Solitaer {
     }
 
     class MyPanel extends JPanel implements MouseListener {
-        Point start;
-
-        Point end;
         boolean moveStarted = false;
+        Point startPoint;
+        Point endPoint;
 
         MyPanel() {
             this.addMouseListener(this);
