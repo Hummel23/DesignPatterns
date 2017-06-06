@@ -1,5 +1,6 @@
 package dp_2;
 
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -40,3 +41,4 @@ public class JDBCExampleSingletonTest {
                 JDBCExampleSingleton.callOfInstances, is(4));
     }
 }
+
