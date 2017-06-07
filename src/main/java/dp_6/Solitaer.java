@@ -8,10 +8,16 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import static java.awt.BorderLayout.*;
+import static javax.swing.JFrame.*;
+import static javax.swing.JOptionPane.*;
+
 
 class Solitaer {
+
+    @Getter
+    private JFrame gui;
     private JPanel mainPanel;
-    //private JButton undo, newGame;
 
     @Getter
     @Setter
@@ -22,16 +28,16 @@ class Solitaer {
     }
 
     void showGUI() {
-        JFrame gui = new JFrame("Solitaer");
+        gui = new JFrame("Solitaer");
 
         mainPanel = new MyPanel();
         JPanel buttonPanel = createButtonPanel();
 
-        gui.add(mainPanel, BorderLayout.CENTER);
-        gui.add(buttonPanel, BorderLayout.SOUTH)
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-        gui.setSize(750, 700)
-        gui.setVisible(true)
+        gui.add(mainPanel, CENTER);
+        gui.add(buttonPanel, SOUTH);
+        gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        gui.setSize(750, 700);
+        gui.setVisible(true);
     }
 
     private JPanel createButtonPanel() {
@@ -48,10 +54,10 @@ class Solitaer {
             if (moveSuccessful) {
                 mainPanel.repaint();
             } else {
-                JOptionPane.showMessageDialog(mainPanel,
+                showMessageDialog(mainPanel,
                         "There are no moves to undo.",
                         "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                        ERROR_MESSAGE);
             }
         });
 
@@ -106,12 +112,24 @@ class Solitaer {
                 boolean moveSuccessful = model.move(new Move(startPoint, endPoint));
                 if (moveSuccessful) {
                     this.repaint();
-                    model.checkWin();
+                    if (model.gameIsWon()) {
+                        int n = showConfirmDialog(mainPanel,
+                                "Well done! You won... \n Would you like to play again?",
+                                "Congratulations",
+                                YES_NO_OPTION);
+                        if (n == YES_OPTION) {
+                            setModel(new Model());
+                            this.repaint();
+                        } else {
+                            getGui().setVisible(false);
+                            getGui().dispose();
+                        }
+                    }
                 } else{
-                    JOptionPane.showMessageDialog(mainPanel,
+                    showMessageDialog(mainPanel,
                             "This move is not allowed.",
                             "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                            ERROR_MESSAGE);
                 }
                 moveStarted = false;
             } else {

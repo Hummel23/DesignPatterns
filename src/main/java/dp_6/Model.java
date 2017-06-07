@@ -10,7 +10,7 @@ class Model {
 
     State[][] field = new State[7][7];
 
-    List<Move> moves = new LinkedList<>();
+    private List<Move> moves = new LinkedList<>();
 
     Model() {
         instantiateField();
@@ -59,8 +59,6 @@ class Model {
                     freeField(middleX, middleY);
                     useEndPointField(endX, endY);
                     moves.add(move);
-                    //checkWin();
-                    //checkIfFurtherMovesPossible();
                     return true;
                 }
             }
@@ -92,7 +90,20 @@ class Model {
     }
 
 
-    void checkWin() {
+    boolean gameIsWon() {
+        int numberOfUsedField = 0;
+        for (int row = 0; row < 7; row++) {
+            for (int col = 0; col < 7; col++) {
+                if (field[row][col] == State.USED) {
+                    numberOfUsedField++;
+                    if (numberOfUsedField == 2) {
+                        return false;
+                    }
+
+                }
+            }
+        }
+            return true;
     }
 
     boolean undoMove() {
