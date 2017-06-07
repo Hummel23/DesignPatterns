@@ -6,17 +6,17 @@ import java.util.List;
 import static dp_6.State.*;
 import static dp_6.State.FREE;
 
-public class Model {
+class Model {
 
     State[][] field = new State[7][7];
 
     List<Move> moves = new LinkedList<>();
 
-    public Model() {
+    Model() {
         instantiateField();
     }
 
-    protected void instantiateField() {
+    private void instantiateField() {
         for (int row = 0; row < 7; row++)
             for (int col = 0; col < 7; col++)
                 if (isOutsideGameField(row, col)){
@@ -42,7 +42,7 @@ public class Model {
 
     }
 
-    public boolean move(Move move) {
+    boolean move(Move move) {
         int startX = move.getStartPointXValue();
         int startY = move.getStartPointYValue();
 
@@ -92,6 +92,18 @@ public class Model {
     }
 
 
-    public void checkWin() {
+    void checkWin() {
+    }
+
+    boolean undoMove() {
+        if (moves.size() > 0) {
+            Move move = moves.get(moves.size() - 1);
+            field[move.getStartPointXValue()][move.getStartPointYValue()] = USED;
+            field[move.getMiddlePointXValue()][move.getMiddlePointYValue()] = USED;
+            field[move.getEndPointXValue()][move.getEndPointYValue()] = FREE;
+            moves.remove(move);
+            return true;
+        }
+        return false;
     }
 }

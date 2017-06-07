@@ -5,15 +5,13 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
-public class Solitaer {
-    JPanel mainPanel;
-    JButton undo, newGame;
+class Solitaer {
+    private JPanel mainPanel;
+    //private JButton undo, newGame;
 
     @Getter
     @Setter
@@ -25,31 +23,48 @@ public class Solitaer {
 
     void showGUI() {
         JFrame gui = new JFrame("Solitaer");
-        this.mainPanel = new MyPanel();
+
+        mainPanel = new MyPanel();
+        JPanel buttonPanel = createButtonPanel();
+
         gui.add(mainPanel, BorderLayout.CENTER);
-        JPanel buttonPanel = new JPanel();
-        this.undo = new JButton("undo");
-        this.newGame = new JButton("new game");
-        buttonPanel.add(undo);
-        // hier der ActionListener für den undo-Button
-        buttonPanel.add(newGame);
-        newGame.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setModel(new Model());
-                mainPanel.repaint();
-
-            }
-
-        });
-        gui.add(buttonPanel, BorderLayout.SOUTH);
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setSize(750, 700);
-        gui.setVisible(true);
+        gui.add(buttonPanel, BorderLayout.SOUTH)
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+        gui.setSize(750, 700)
+        gui.setVisible(true)
     }
 
-    class MyPanel extends JPanel implements MouseListener {
+    private JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+
+        JButton undo = new JButton("undo");
+        JButton newGame = new JButton("new game");
+
+        buttonPanel.add(undo);
+        buttonPanel.add(newGame);
+
+        undo.addActionListener(e -> {
+            boolean moveSuccessful = getModel().undoMove();
+            if (moveSuccessful) {
+                mainPanel.repaint();
+            } else {
+                JOptionPane.showMessageDialog(mainPanel,
+                        "There are no moves to undo.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        newGame.addActionListener(e -> {
+            setModel(new Model());
+            mainPanel.repaint();
+        });
+
+        return buttonPanel;
+    }
+
+
+    private class MyPanel extends JPanel implements MouseListener {
         boolean moveStarted = false;
         Point startPoint;
         Point endPoint;
