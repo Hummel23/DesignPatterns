@@ -1,10 +1,8 @@
 package dp_7;
 
-import java.io.File;
+class File extends Component {
 
-class Datei extends Komponente{
-
-    Datei(File file) {
+    File(java.io.File file) {
         super(file);
     }
 

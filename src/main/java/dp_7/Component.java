@@ -5,12 +5,12 @@ import lombok.Getter;
 
 import java.io.File;
 
-abstract class Komponente {
+abstract class Component {
 
     @Getter
     final protected File FILE;
 
-    Komponente(File FILE) {
+    Component(File FILE) {
         this.FILE = FILE;
     }
 
