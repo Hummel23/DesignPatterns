@@ -1,6 +1,6 @@
 package dp_caipiExample.client.view;
 
-public class ViewElements {
+public class StepsOfCocktaillover {
 
 
     public static String PROSTCAIPI = "\n\n" +
