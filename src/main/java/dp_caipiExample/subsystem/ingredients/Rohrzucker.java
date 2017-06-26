@@ -1,10 +1,12 @@
-package dp_Klausur.caipiExample.Subsystem;
+package dp_caipiExample.subsystem.ingredients;
+
+import dp_caipiExample.subsystem.ingredients.interfaces.CocktailIngredient;
 
 public class Rohrzucker implements CocktailIngredient{
 
     private int contentOfPackageInGramm;
 
-    Rohrzucker() {
+    public Rohrzucker() {
         this.contentOfPackageInGramm = 500;
     }
 
@@ -14,13 +16,13 @@ public class Rohrzucker implements CocktailIngredient{
     }
 
     @Override
-    public boolean hasEnoughContent4OneCocktail() {
+    public boolean isEnoughForCocktail() {
         return contentOfPackageInGramm >= 60;
     }
 
-    public void getTL(int numberOfTL) {
-        System.out.println("Added " + numberOfTL + " teaspoons of crushed Rohrzucker.");
+    public Rohrzucker getTL(int numberOfTL) {
         this.contentOfPackageInGramm -= (numberOfTL * 20);
+        return this;
     }
 
 }

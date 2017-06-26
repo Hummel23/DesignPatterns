@@ -1,10 +1,12 @@
-package dp_Klausur.caipiExample.Subsystem;
+package dp_caipiExample.subsystem.ingredients;
+
+import dp_caipiExample.subsystem.ingredients.interfaces.CocktailIngredient;
 
 public class Cacacha implements CocktailIngredient {
 
     private int contentOfBottleInCL;
 
-    Cacacha() {
+    public Cacacha() {
         this.contentOfBottleInCL = 80;
     }
 
@@ -14,12 +16,12 @@ public class Cacacha implements CocktailIngredient {
     }
 
     @Override
-    public boolean hasEnoughContent4OneCocktail() {
+    public boolean isEnoughForCocktail() {
         return contentOfBottleInCL >= 5;
     }
 
-    public void get5CL() {
+    public Cacacha get5CL() {
         this.contentOfBottleInCL -= 5;
-        System.out.println("5 cl Cacacha extracted from bottle.");
+        return this;
     }
 }
