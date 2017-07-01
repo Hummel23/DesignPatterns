@@ -1,28 +1,12 @@
 package dp_caipiExample.subsystem.ingredients;
 
-import dp_caipiExample.subsystem.ingredients.interfaces.CocktailIngredient;
+public class Rohrzucker extends AbstractCocktailIngredient {
 
-public class Rohrzucker implements CocktailIngredient{
+    public static String NAME = "Rohrzucker";
 
-    private int contentOfPackageInGramm;
-
+    //measured in grams
     public Rohrzucker() {
-        this.contentOfPackageInGramm = 500;
-    }
-
-    @Override
-    public String getName() {
-        return "Rohrzucker";
-    }
-
-    @Override
-    public boolean isEnoughForCocktail() {
-        return contentOfPackageInGramm >= 60;
-    }
-
-    public Rohrzucker getTL(int numberOfTL) {
-        this.contentOfPackageInGramm -= (numberOfTL * 20);
-        return this;
+        this.contentOfIngredient = 500;
     }
 
 }

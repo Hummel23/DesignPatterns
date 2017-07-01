@@ -1,37 +1,33 @@
 package dp_caipiExample.subsystem;
 
 import dp_caipiExample.subsystem.ingredients.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import dp_caipiExample.subsystem.ingredients.AbstractCocktailIngredient;
 
 public class Supermarkt {
 
-    public Cacacha buyCacacha() {
-        return new Cacacha();
-    }
-
-    public List<Limette> buyLimetten(int numberOfLimetten ) {
-        List<Limette> limetten = new ArrayList<>();
-        for (int i = 0; i < numberOfLimetten; i++) {
-            limetten.add(new Limette());
+    public AbstractCocktailIngredient buyIngredient(String ingredientName) {
+        switch (ingredientName) {
+            case "Cacacha":
+                return new Cacacha();
+            case "Crushed Ice":
+                return new CrushedIce();
+            case "Limette":
+                return new Limetten();
+            case "Rohrzucker":
+                return new Rohrzucker();
+            case "Strohhalme":
+                return new Strohhalme();
+            case "Erdbeere":
+                return new Erdbeeren();
+            case "Minze":
+                return new Minze();
+            case "Rum":
+                return new Rum();
+            case "Soda":
+                return new Soda();
+            default:
+                return null;
         }
-        return limetten;
-    }
 
-    public List<Strohhalm> buyStrohalme() {
-        List<Strohhalm> strohhalme = new ArrayList<>();
-            for (int i = 0; i < 30; i++) {
-                strohhalme.add(new Strohhalm());
-            }
-        return strohhalme;
-    }
-
-    public Rohrzucker buyRohrzucker() {
-        return new Rohrzucker();
-    }
-
-    public CrushedIce buyCrushedIce() {
-        return new CrushedIce();
     }
 }
