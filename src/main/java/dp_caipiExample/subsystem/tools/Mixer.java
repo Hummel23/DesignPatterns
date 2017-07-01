@@ -17,5 +17,8 @@ public class Mixer {
     public void mixIngredients() {
 
     }
+    public List<AbstractCocktailIngredient> getIngredients() {
+        return ingredients;
+    }
 
 }

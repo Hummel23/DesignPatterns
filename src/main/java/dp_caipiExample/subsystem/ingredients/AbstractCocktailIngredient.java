@@ -13,11 +13,8 @@ public abstract class AbstractCocktailIngredient {
     }
 
     public AbstractCocktailIngredient getOnePortionForCocktail() {
-        if (isEnoughForCocktail()) {
-            contentOfIngredient -= portionForOneCocktail;
-            return this;
-        }
-        return null;
+        contentOfIngredient -= portionForOneCocktail;
+        return this;
     }
 
     public void setPortionSize(int sizeOfPortion) {

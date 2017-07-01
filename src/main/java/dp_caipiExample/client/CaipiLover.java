@@ -1,29 +1,23 @@
 package dp_caipiExample.client;
 
-import dp_caipiExample.client.interfaces.CocktailLover;
-import dp_caipiExample.subsystem.Supermarkt;
-import dp_caipiExample.subsystem.tools.Glas;
-import dp_caipiExample.subsystem.tools.Stoessel;
 import dp_caipiExample.client.view.StepsOfCocktaillover;
 import dp_caipiExample.subsystem.ingredients.*;
+import dp_caipiExample.subsystem.tools.Stoessel;
 
-public class CaipiLover implements CocktailLover {
+public class CaipiLover extends AbstractCocktailLover {
 
-    private Supermarkt supermarkt;
     private Cacacha cacacha;
     private Limetten limetten;
     private Strohhalme strohhalme;
     private Rohrzucker rohrzucker;
     private Stoessel stoessel;
     private CrushedIce crushedIce;
-    private Glas cocktailglas;
 
 
     public CaipiLover() {
-        this.supermarkt = new Supermarkt();
+        super();
         this.stoessel = new Stoessel();
-        this.cocktailglas = new Glas();
-        
+
         this.cacacha = (Cacacha) supermarkt.buyIngredient(Cacacha.NAME);
         StepsOfCocktaillover.boughtNewIngredients(Cacacha.NAME);
         this.limetten = (Limetten) supermarkt.buyIngredient(Limetten.NAME);
@@ -38,12 +32,7 @@ public class CaipiLover implements CocktailLover {
 
     @Override
     public void prepareCocktail() throws IllegalStateException {
-
-        // Glas
-        if (this.cocktailglas.isFull()) {
-            this.cocktailglas = new Glas();
-        }
-        StepsOfCocktaillover.pickedNewGlas();
+        super.prepareCocktail();
 
 
         //Limetten

@@ -100,4 +100,20 @@ public class StepsOfCocktaillover {
     public static void pickedNewGlas() {
         System.out.println("A new glas was picked.");
     }
+
+    public static void addedIngredientToMixer(String ingredient) {
+        System.out.println(ingredient + " added to mixer.");
+    }
+
+    public static void limettenSqueezed(int number) {
+        System.out.println(number + " Limetten were squeezed.");
+    }
+
+    public static void mixedIngredients() {
+        System.out.println("All ingredients in the mixer were mixed.");
+    }
+
+    public static void pouredCocktailFromMixerToGlas() {
+        System.out.println("Cocktail was poured from mixer to glas.");
+    }
 }

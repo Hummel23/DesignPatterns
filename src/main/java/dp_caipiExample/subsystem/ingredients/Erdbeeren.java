@@ -8,4 +8,8 @@ public class Erdbeeren extends AbstractCocktailIngredient {
     public Erdbeeren() {
         this.contentOfIngredient = 25;
     }
+
+    public void washErdbeere() {
+    }
+
 }

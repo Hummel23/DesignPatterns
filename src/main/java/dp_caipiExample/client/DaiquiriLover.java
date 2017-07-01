@@ -1,11 +1,16 @@
 package dp_caipiExample.client;
 
 
-import dp_caipiExample.client.interfaces.CocktailLover;
+public class DaiquiriLover extends AbstractCocktailLover {
 
-public class DaiquiriLover implements CocktailLover {
+    public DaiquiriLover() {
+        super();
+    }
+
+
     @Override
     public void prepareCocktail() {
+        super.prepareCocktail();
 
     }
 

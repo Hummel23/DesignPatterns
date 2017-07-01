@@ -15,4 +15,8 @@ public class Limetten extends AbstractCocktailIngredient {
     public void cutInPieces() {
     }
 
+    public void squeezeLimetten() {
+
+    }
+
 }
