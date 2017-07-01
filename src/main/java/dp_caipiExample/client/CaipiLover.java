@@ -7,14 +7,12 @@ import dp_caipiExample.subsystem.tools.Stoessel;
 import dp_caipiExample.client.view.StepsOfCocktaillover;
 import dp_caipiExample.subsystem.ingredients.*;
 
-import java.util.List;
-
 public class CaipiLover implements CocktailLover {
 
     private Supermarkt supermarkt;
     private Cacacha cacacha;
-    private List<Limette> limetten;
-    private List<Strohhalm> strohhalme;
+    private Limetten limetten;
+    private Strohhalme strohhalme;
     private Rohrzucker rohrzucker;
     private Stoessel stoessel;
     private CrushedIce crushedIce;
@@ -25,16 +23,17 @@ public class CaipiLover implements CocktailLover {
         this.supermarkt = new Supermarkt();
         this.stoessel = new Stoessel();
         this.cocktailglas = new Glas();
-        this.cacacha = supermarkt.buyCacacha();
-        StepsOfCocktaillover.boughtNewIngredients(cacacha.getName());
-        this.limetten = supermarkt.buyLimetten(5);
-        StepsOfCocktaillover.boughtNewIngredients(limetten.get(0).getName());
-        this.strohhalme = supermarkt.buyStrohalme();
-        StepsOfCocktaillover.boughtNewIngredients(strohhalme.get(0).getName());
-        this.rohrzucker = supermarkt.buyRohrzucker();
-        StepsOfCocktaillover.boughtNewIngredients(rohrzucker.getName());
-        this.crushedIce = supermarkt.buyCrushedIce();
-        StepsOfCocktaillover.boughtNewIngredients(crushedIce.getName());
+        
+        this.cacacha = (Cacacha) supermarkt.buyIngredient(Cacacha.NAME);
+        StepsOfCocktaillover.boughtNewIngredients(Cacacha.NAME);
+        this.limetten = (Limetten) supermarkt.buyIngredient(Limetten.NAME);
+        StepsOfCocktaillover.boughtNewIngredients(Limetten.NAME);
+        this.strohhalme = (Strohhalme) supermarkt.buyIngredient(Strohhalme.NAME);
+        StepsOfCocktaillover.boughtNewIngredients(Strohhalme.NAME);
+        this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker.NAME);
+        StepsOfCocktaillover.boughtNewIngredients(Rohrzucker.NAME);
+        this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce.NAME);
+        StepsOfCocktaillover.boughtNewIngredients(CrushedIce.NAME);
     }
 
     @Override
@@ -46,112 +45,91 @@ public class CaipiLover implements CocktailLover {
         }
         StepsOfCocktaillover.pickedNewGlas();
 
-        //Limette
-        Limette limetteForCaipi = pickLimette();
-        washLimette(limetteForCaipi);
-        cutLimette(limetteForCaipi);
+
+        //Limetten
+        limetten.setPortionSize(1);
+        if (limetten.isEnoughForCocktail() == false) {
+            this.limetten = (Limetten) supermarkt.buyIngredient(Limetten.NAME);
+            StepsOfCocktaillover.boughtNewIngredients(Limetten.NAME);
+        }
+        Limetten limetteForCaipi = (Limetten) limetten.getOnePortionForCocktail();
+        StepsOfCocktaillover.ingredientMeasured(Limetten.NAME);
+
+        limetteForCaipi.washLimette();
+        StepsOfCocktaillover.ingredientWashed(Limetten.NAME);
+
+        limetteForCaipi.cutInPieces();
+        StepsOfCocktaillover.ingredientCut(Limetten.NAME);
+
         cocktailglas.addIngredient(limetteForCaipi);
-        StepsOfCocktaillover.addedIngredientToGlas(limetteForCaipi.getName());
+        StepsOfCocktaillover.addedIngredientToGlas(Limetten.NAME);
+
 
         //crush
         stoessel.crush();
-        StepsOfCocktaillover.crushedWithStoessel(limetteForCaipi.getName());
+        StepsOfCocktaillover.crushedWithStoessel(Limetten.NAME);
+
 
         //Rohrzucker
-        Rohrzucker rohrzuckerForCaipi = measureRohrzucker();
+        rohrzucker.setPortionSize(30);
+        if (rohrzucker.isEnoughForCocktail() == false) {
+            this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker.NAME);
+            StepsOfCocktaillover.boughtNewIngredients(Rohrzucker.NAME);
+        }
+        Rohrzucker rohrzuckerForCaipi = (Rohrzucker) rohrzucker.getOnePortionForCocktail();
+        StepsOfCocktaillover.ingredientMeasured(Rohrzucker.NAME);
+
         cocktailglas.addIngredient(rohrzuckerForCaipi);
-        StepsOfCocktaillover.addedIngredientToGlas(rohrzuckerForCaipi.getName());
+        StepsOfCocktaillover.addedIngredientToGlas(Rohrzucker.NAME);
+
 
         //Crushed Ice
-        CrushedIce crushedIceForCaipi = measureCrushedIce();
+        crushedIce.setPortionSize(2);
+        if (crushedIce.isEnoughForCocktail() == false) {
+            this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce.NAME);
+            StepsOfCocktaillover.boughtNewIngredients(CrushedIce.NAME);
+        }
+        CrushedIce crushedIceForCaipi = (CrushedIce) crushedIce.getOnePortionForCocktail();
+        StepsOfCocktaillover.ingredientMeasured(CrushedIce.NAME);
+
         cocktailglas.addIngredient(crushedIceForCaipi);
-        StepsOfCocktaillover.addedIngredientToGlas(crushedIceForCaipi.getName());
+        StepsOfCocktaillover.addedIngredientToGlas(CrushedIce.NAME);
+
 
         //crush
         stoessel.crush();
-        StepsOfCocktaillover.crushedWithStoessel(crushedIceForCaipi.getName());
+        StepsOfCocktaillover.crushedWithStoessel(CrushedIce.NAME);
+
 
         //Cacacha
-        Cacacha cacachaForCaipi = measureCacacha();
+        cacacha.setPortionSize(5);
+        if (cacacha.isEnoughForCocktail() == false) {
+            this.cacacha = (Cacacha) supermarkt.buyIngredient(Cacacha.NAME);
+            StepsOfCocktaillover.boughtNewIngredients(Cacacha.NAME);
+        }
+        Cacacha cacachaForCaipi = (Cacacha) cacacha.getOnePortionForCocktail();
+        StepsOfCocktaillover.ingredientMeasured(Cacacha.NAME);
+
         cocktailglas.addIngredient(cacachaForCaipi);
-        StepsOfCocktaillover.addedIngredientToGlas(cacachaForCaipi.getName());
+        StepsOfCocktaillover.addedIngredientToGlas(Cacacha.NAME);
+
 
         //Strohalm
-        Strohhalm strohhalmForCaipi = pickStrohalm();
-        cocktailglas.addIngredient(strohhalmForCaipi);
-        StepsOfCocktaillover.addedIngredientToGlas(strohhalmForCaipi.getName());
+        strohhalme.setPortionSize(1);
+        if (strohhalme.isEnoughForCocktail() == false) {
+            this.strohhalme = (Strohhalme) supermarkt.buyIngredient(Strohhalme.NAME);
+            StepsOfCocktaillover.boughtNewIngredients(Strohhalme.NAME);
+        }
+        Strohhalme strohhalmeForCaipi = (Strohhalme) strohhalme.getOnePortionForCocktail();
+        StepsOfCocktaillover.ingredientMeasured(Strohhalme.NAME);
+
+        cocktailglas.addIngredient(strohhalmeForCaipi);
+        StepsOfCocktaillover.addedIngredientToGlas(Strohhalme.NAME);
     }
 
 
     @Override
     public void enjoyCocktail() {
         System.out.println(StepsOfCocktaillover.PROSTCAIPI);
-    }
-
-    private Limette pickLimette() {
-        if (limetten.size() == 0) {
-            this.limetten = supermarkt.buyLimetten(5);
-            StepsOfCocktaillover.boughtNewIngredients(limetten.get(0).getName());
-            return pickLimette();
-        }
-        Limette limetteForCaipi = limetten.get(0);
-        limetten.remove(0);
-        StepsOfCocktaillover.ingredientMeasured(limetteForCaipi.getName());
-
-        return limetteForCaipi;
-    }
-
-    private void washLimette(Limette limette) {
-        limette.washWithWarmWater();
-        StepsOfCocktaillover.ingredientWashed(limette.getName());
-    }
-
-    private void cutLimette(Limette limette) {
-        limette.cutInPieces();
-        StepsOfCocktaillover.ingredientCut(limette.getName());
-    }
-
-    private Rohrzucker measureRohrzucker() {
-       if(rohrzucker.isEnoughForCocktail() == false) {
-            this.rohrzucker = supermarkt.buyRohrzucker();
-            StepsOfCocktaillover.boughtNewIngredients(rohrzucker.getName());
-            return measureRohrzucker();
-        }
-
-        StepsOfCocktaillover.ingredientMeasured(rohrzucker.getName());
-        return rohrzucker.getTL(3);
-    }
-
-    private CrushedIce measureCrushedIce() {
-        if (crushedIce.isEnoughForCocktail() == false) {
-            this.crushedIce = supermarkt.buyCrushedIce();
-            StepsOfCocktaillover.boughtNewIngredients(crushedIce.getName());
-            return measureCrushedIce();
-        }
-        StepsOfCocktaillover.ingredientMeasured(crushedIce.getName());
-        return crushedIce.getPortion();
-    }
-
-    private Cacacha measureCacacha() {
-        if (cacacha.isEnoughForCocktail() == false) {
-            this.cacacha = supermarkt.buyCacacha();
-            StepsOfCocktaillover.boughtNewIngredients(cacacha.getName());
-            return measureCacacha();
-        }
-        StepsOfCocktaillover.ingredientMeasured(cacacha.getName());
-        return cacacha.get5CL();
-    }
-
-    private Strohhalm pickStrohalm() {
-        if (strohhalme.size() == 0) {
-            this.strohhalme = supermarkt.buyStrohalme();
-            StepsOfCocktaillover.boughtNewIngredients(strohhalme.get(0).getName());
-            return pickStrohalm();
-        }
-        Strohhalm strohhalmForCaipi = strohhalme.get(0);
-        strohhalme.remove(0);
-
-        StepsOfCocktaillover.ingredientMeasured(strohhalmForCaipi.getName());
-        return strohhalmForCaipi;
     }
 }
