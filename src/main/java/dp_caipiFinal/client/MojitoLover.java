@@ -1,7 +1,7 @@
 package dp_caipiFinal.client;
 
 
-import dp_caipiFinal.fassade.Cocktail;
+import dp_caipiFinal.subsystem.enums.Cocktail;
 
 import static dp_caipiFinal.client.view.StepsOfCocktaillover.PROSTMOJITO;
 

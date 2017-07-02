@@ -3,7 +3,7 @@ package dp_caipiFinal.client;
 
 import dp_caipiFinal.client.view.StepsOfCocktaillover;
 import dp_caipiFinal.fassade.Barkeeper;
-import dp_caipiFinal.fassade.Cocktail;
+import dp_caipiFinal.subsystem.enums.Cocktail;
 
 public abstract class AbstractCocktailLover {
 

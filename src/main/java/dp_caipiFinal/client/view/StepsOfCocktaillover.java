@@ -1,6 +1,6 @@
 package dp_caipiFinal.client.view;
 
-import dp_caipiFinal.fassade.Cocktail;
+import dp_caipiFinal.subsystem.enums.Cocktail;
 
 public class StepsOfCocktaillover {
 

@@ -1,8 +1,8 @@
 package dp_caipiFirstPart.client;
 
 import dp_caipiFirstPart.client.view.StepsOfCocktaillover;
-import dp_caipiFirstPart.subsystem.Supermarkt;
-import dp_caipiFirstPart.subsystem.tools.Glas;
+import dp_caipiFinal.subsystem.Supermarkt;
+import dp_caipiFinal.subsystem.tools.Glas;
 
 public abstract class AbstractCocktailLover {
     Supermarkt supermarkt;

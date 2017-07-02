@@ -1,9 +1,10 @@
 package dp_caipiFirstPart.client;
 
 
-import dp_caipiFirstPart.subsystem.ingredients.*;
-import dp_caipiFirstPart.subsystem.tools.Stoessel;
+import dp_caipiFinal.subsystem.ingredients.*;
+import dp_caipiFinal.subsystem.tools.Stoessel;
 
+import static dp_caipiFinal.subsystem.enums.IngredientName.*;
 import static dp_caipiFirstPart.client.view.StepsOfCocktaillover.*;
 
 public class MojitoLover extends AbstractCocktailLover {
@@ -21,20 +22,20 @@ public class MojitoLover extends AbstractCocktailLover {
         super();
 
         this.stoessel = new Stoessel();
-        this.limetten = (Limetten) supermarkt.buyIngredient(Limetten.NAME);
-        boughtNewIngredients(Limetten.NAME);
-        this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce.NAME);
-        boughtNewIngredients(CrushedIce.NAME);
-        this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker.NAME);
-        boughtNewIngredients(Rohrzucker.NAME);
-        this.minze = (Minze) supermarkt.buyIngredient(Minze.NAME);
-        boughtNewIngredients(Minze.NAME);
-        this.rum = (Rum) supermarkt.buyIngredient(Rum.NAME);
-        boughtNewIngredients(Rum.NAME);
-        this.soda = (Soda) supermarkt.buyIngredient(Soda.NAME);
-        boughtNewIngredients(Soda.NAME);
-        this.strohhalme= (Strohhalme) supermarkt.buyIngredient(Strohhalme.NAME);
-        boughtNewIngredients(Strohhalme.NAME);
+        this.limetten = (Limetten) supermarkt.buyIngredient(Limette);
+        boughtNewIngredients(Limette.name());
+        this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce);
+        boughtNewIngredients(CrushedIce.name());
+        this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker);
+        boughtNewIngredients(Rohrzucker.name());
+        this.minze = (Minze) supermarkt.buyIngredient(Minze);
+        boughtNewIngredients(Minze.name());
+        this.rum = (Rum) supermarkt.buyIngredient(Rum);
+        boughtNewIngredients(Rum.name());
+        this.soda = (Soda) supermarkt.buyIngredient(Soda);
+        boughtNewIngredients(Soda.name());
+        this.strohhalme= (Strohhalme) supermarkt.buyIngredient(Strohhalm);
+        boughtNewIngredients(Strohhalm.name());
     }
     
 
@@ -45,96 +46,96 @@ public class MojitoLover extends AbstractCocktailLover {
         //Limetten
         limetten.setPortionSize(1);
         if (limetten.isEnoughForCocktail() == false) {
-            this.limetten = (Limetten) supermarkt.buyIngredient(Limetten.NAME);
-            boughtNewIngredients(Limetten.NAME);
+            this.limetten = (Limetten) supermarkt.buyIngredient(Limette);
+            boughtNewIngredients(Limette.name());
         }
         Limetten limetteForMojito = (Limetten) limetten.getOnePortionForCocktail();
-        ingredientMeasured(Limetten.NAME);
+        ingredientMeasured(Limette.name());
 
-        limetteForMojito.washLimette();
-        ingredientWashed(Limetten.NAME);
+        limetteForMojito.washFruit();
+        ingredientWashed(Limette.name());
 
         limetteForMojito.cutInPieces();
-        ingredientCut(Limetten.NAME);
+        ingredientCut(Limette.name());
 
         cocktailglas.addIngredient(limetteForMojito);
-        addedIngredientToGlas(Limetten.NAME);
+        addedIngredientToGlas(Limette.name());
 
         //Rohrzucker
         rohrzucker.setPortionSize(20);
         if (rohrzucker.isEnoughForCocktail() == false) {
-            this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker.NAME);
-            boughtNewIngredients(Rohrzucker.NAME);
+            this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker);
+            boughtNewIngredients(Rohrzucker.name());
         }
         Rohrzucker rohrzuckerForMojito = (Rohrzucker) rohrzucker.getOnePortionForCocktail();
-        ingredientMeasured(Rohrzucker.NAME);
+        ingredientMeasured(Rohrzucker.name());
 
         cocktailglas.addIngredient(rohrzuckerForMojito);
-        addedIngredientToGlas(Rohrzucker.NAME);
+        addedIngredientToGlas(Rohrzucker.name());
 
         //Minze
         minze.setPortionSize(8);
         if (minze.isEnoughForCocktail() == false) {
-            this.minze = (Minze) supermarkt.buyIngredient(Minze.NAME);
-            boughtNewIngredients(Minze.NAME);
+            this.minze = (Minze) supermarkt.buyIngredient(Minze);
+            boughtNewIngredients(Minze.name());
         }
         Minze minzeForMojito = (Minze) minze.getOnePortionForCocktail();
-        ingredientMeasured(Minze.NAME);
+        ingredientMeasured(Minze.name());
 
         cocktailglas.addIngredient(minzeForMojito);
-        addedIngredientToGlas(Minze.NAME);
+        addedIngredientToGlas(Minze.name());
         
         //crush
         stoessel.crush();
-        crushedWithStoessel(Minze.NAME, Limetten.NAME);
+        crushedWithStoessel(Minze.name(), Limette.name());
         
         //crushed Ice
         crushedIce.setPortionSize(2);
         if (crushedIce.isEnoughForCocktail() == false) {
-            this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce.NAME);
-            boughtNewIngredients(CrushedIce.NAME);
+            this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce);
+            boughtNewIngredients(CrushedIce.name());
         }
         CrushedIce crushedIceForMojito = (CrushedIce) crushedIce.getOnePortionForCocktail();
-        ingredientMeasured(CrushedIce.NAME);
+        ingredientMeasured(CrushedIce.name());
 
         cocktailglas.addIngredient(crushedIceForMojito);
-        addedIngredientToGlas(CrushedIce.NAME);
+        addedIngredientToGlas(CrushedIce.name());
 
         //Rum
         rum.setPortionSize(5);
         if (rum.isEnoughForCocktail() == false) {
-            this.rum = (Rum) supermarkt.buyIngredient(Rum.NAME);
-            boughtNewIngredients(Rum.NAME);
+            this.rum = (Rum) supermarkt.buyIngredient(Rum);
+            boughtNewIngredients(Rum.name());
         }
         Rum rumForCaipi = (Rum) rum.getOnePortionForCocktail();
-        ingredientMeasured(Rum.NAME);
+        ingredientMeasured(Rum.name());
 
         cocktailglas.addIngredient(rumForCaipi);
-        addedIngredientToGlas(Rum.NAME);
+        addedIngredientToGlas(Rum.name());
 
         //Soda
         soda.setPortionSize(150);
         if (soda.isEnoughForCocktail() == false) {
-            this.soda = (Soda) supermarkt.buyIngredient(Soda.NAME);
-            boughtNewIngredients(Soda.NAME);
+            this.soda = (Soda) supermarkt.buyIngredient(Soda);
+            boughtNewIngredients(Soda.name());
         }
         Soda sodaForCaipi = (Soda) soda.getOnePortionForCocktail();
-        ingredientMeasured(Soda.NAME);
+        ingredientMeasured(Soda.name());
 
         cocktailglas.addIngredient(sodaForCaipi);
-        addedIngredientToGlas(Soda.NAME);
+        addedIngredientToGlas(Soda.name());
 
         //Strohalm
         strohhalme.setPortionSize(1);
         if (strohhalme.isEnoughForCocktail() == false) {
-            this.strohhalme = (Strohhalme) supermarkt.buyIngredient(Strohhalme.NAME);
-            boughtNewIngredients(Strohhalme.NAME);
+            this.strohhalme = (Strohhalme) supermarkt.buyIngredient(Strohhalm);
+            boughtNewIngredients(Strohhalm.name());
         }
         Strohhalme strohhalmeForCaipi = (Strohhalme) strohhalme.getOnePortionForCocktail();
-        ingredientMeasured(Strohhalme.NAME);
+        ingredientMeasured(Strohhalm.name());
 
         cocktailglas.addIngredient(strohhalmeForCaipi);
-        addedIngredientToGlas(Strohhalme.NAME);
+        addedIngredientToGlas(Strohhalm.name());
 
     }
 
