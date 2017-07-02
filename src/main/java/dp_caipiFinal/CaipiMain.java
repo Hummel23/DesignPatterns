@@ -3,7 +3,7 @@ package dp_caipiFinal;
 import dp_caipiFinal.client.CaipiLover;
 import dp_caipiFinal.client.DaiquiriLover;
 import dp_caipiFinal.client.MojitoLover;
-import dp_caipiFinal.fassade.Cocktail;
+import dp_caipiFinal.subsystem.enums.Cocktail;
 
 public class CaipiMain {
 
@@ -26,6 +26,6 @@ public class CaipiMain {
             daiquiriLover.orderCocktail(cocktail);
             daiquiriLover.enjoyCocktail();
         }
-
     }
 }
+

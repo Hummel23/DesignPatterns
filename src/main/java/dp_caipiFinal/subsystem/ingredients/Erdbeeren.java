@@ -1,14 +1,32 @@
 package dp_caipiFinal.subsystem.ingredients;
 
-public class Erdbeeren extends AbstractCocktailIngredient {
+import dp_caipiFinal.subsystem.enums.IngredientName;
+import dp_caipiFinal.subsystem.interfaces.Fruit;
 
-    public static String NAME = "Erdbeere";
+import static dp_caipiFinal.subsystem.enums.IngredientName.Erdbeere;
+
+public class Erdbeeren extends AbstractCocktailIngredient implements Fruit {
+
+    public static IngredientName NAME = Erdbeere;
 
     //measured in pieces
     public Erdbeeren() {
         this.contentOfIngredient = 25;
     }
 
-    public void washErdbeere() {
+    @Override
+    public String getNAME() {
+        return NAME.name();
     }
+
+    @Override
+    public void washFruit() {
+
+    }
+
+    @Override
+    public void cutInPieces() {
+
+    }
+
 }

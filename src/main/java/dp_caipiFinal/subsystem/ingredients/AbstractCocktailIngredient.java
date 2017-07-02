@@ -23,4 +23,6 @@ public abstract class AbstractCocktailIngredient {
     public void setPortionSize(int sizeOfPortion) {
         this.portionForOneCocktail = sizeOfPortion;
     }
+
+    public abstract String getNAME();
 }

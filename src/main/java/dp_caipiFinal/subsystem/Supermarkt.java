@@ -1,29 +1,32 @@
 package dp_caipiFinal.subsystem;
 
+import dp_caipiFinal.subsystem.enums.IngredientName;
 import dp_caipiFinal.subsystem.ingredients.*;
 
 public class Supermarkt {
 
-    public AbstractCocktailIngredient buyIngredient(String ingredientName) {
+    public AbstractCocktailIngredient buyIngredient(IngredientName ingredientName) {
         switch (ingredientName) {
-            case "Cacacha":
+            case Cacacha:
                 return new Cacacha();
-            case "Crushed Ice":
+            case CrushedIce:
                 return new CrushedIce();
-            case "Limette":
+            case Limette:
                 return new Limetten();
-            case "Rohrzucker":
+            case Rohrzucker:
                 return new Rohrzucker();
-            case "Strohhalme":
+            case Strohhalm:
                 return new Strohhalme();
-            case "Erdbeere":
+            case Erdbeere:
                 return new Erdbeeren();
-            case "Minze":
+            case Minze:
                 return new Minze();
-            case "Rum":
+            case Rum:
                 return new Rum();
-            case "Soda":
+            case Soda:
                 return new Soda();
+            case Limettensaft:
+                return new Limettensaft();
             default:
                 return null;
         }

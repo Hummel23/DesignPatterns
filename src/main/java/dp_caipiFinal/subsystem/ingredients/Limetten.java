@@ -1,22 +1,31 @@
 package dp_caipiFinal.subsystem.ingredients;
 
-public class Limetten extends AbstractCocktailIngredient {
+import dp_caipiFinal.subsystem.enums.IngredientName;
+import dp_caipiFinal.subsystem.interfaces.Fruit;
 
-    public static String NAME = "Limette";
+import static dp_caipiFinal.subsystem.enums.IngredientName.Limette;
+
+public class Limetten extends AbstractCocktailIngredient implements Fruit {
+
+    public IngredientName NAME = Limette;
 
     //measured in pieces
     public Limetten() {
         this.contentOfIngredient = 8;
     }
 
-    public void washLimette() {
+
+    @Override
+    public void washFruit() {
+
     }
 
     public void cutInPieces() {
     }
 
-    public void squeezeLimetten() {
-
+    @Override
+    public String getNAME() {
+        return this.NAME.name();
     }
 
 }
