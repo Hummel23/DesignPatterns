@@ -64,7 +64,7 @@ public class Barkeeper {
         //add 6 Erdbeeren to mixer
         addIngredientToContainer(this.erdbeeren, this.mixer, 6);
        // add 2 cl lemon juice to mixer
-        addIngredientToContainer(this.limetten, this.mixer, 2);
+        addIngredientToContainer(this.limettensaft, this.mixer, 2);
         //add 5 cl Rum to mixer
         addIngredientToContainer(this.rum, this.mixer, 5);
         //add 30 gram of Rohrzucker to mixer

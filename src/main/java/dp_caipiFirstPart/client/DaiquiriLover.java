@@ -17,6 +17,7 @@ public class DaiquiriLover extends AbstractCocktailLover {
     Minze minze;
     CrushedIce crushedIce;
     Rum rum;
+    Limettensaft limettensaft;
     Mixer mixer;
 
     public DaiquiriLover() {
@@ -31,6 +32,7 @@ public class DaiquiriLover extends AbstractCocktailLover {
         this.minze = (Minze) supermarkt.buyIngredient(Minze);
         this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce);
         this.rum = (Rum) supermarkt.buyIngredient(Rum);
+        this.limettensaft = (dp_caipiFinal.subsystem.ingredients.Limettensaft) supermarkt.buyIngredient(Limettensaft);
     }
 
 
@@ -54,20 +56,17 @@ public class DaiquiriLover extends AbstractCocktailLover {
         mixer.addIngredient(erdbeerenForDaiquiri);
         addedIngredientToMixer(Erdbeere.name());
 
-        //Limetten
-        limetten.setPortionSize(2);
-        if (limetten.isEnoughForCocktail() == false) {
-            this.limetten = (Limetten) supermarkt.buyIngredient(Limette);
-            boughtNewIngredients(Limette.name());
+        //Limettensaft
+        limettensaft.setPortionSize(2);
+        if (limettensaft.isEnoughForCocktail() == false) {
+            this.limettensaft = (Limettensaft) supermarkt.buyIngredient(Limettensaft);
+            boughtNewIngredients(Limettensaft.name());
         }
 
-        //TODO change for limettensaft
-        Limetten limettenForDaiquiri = (Limetten) limetten.getOnePortionForCocktail();
-        ingredientMeasured(Limette.name());
+        Limettensaft limettensaftForDaiquiri = (Limettensaft) limettensaft.getOnePortionForCocktail();
+        ingredientMeasured(Limettensaft.name());
 
-        limettenSqueezed(2);
-
-        mixer.addIngredient(limettenForDaiquiri);
+        mixer.addIngredient(limettensaftForDaiquiri);
         addedIngredientToMixer(Limette.name());
 
         //Rum

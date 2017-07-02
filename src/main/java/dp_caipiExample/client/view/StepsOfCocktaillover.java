@@ -105,10 +105,6 @@ public class StepsOfCocktaillover {
         System.out.println(ingredient + " added to mixer.");
     }
 
-    public static void limettenSqueezed(int number) {
-        System.out.println(number + " Limetten were squeezed.");
-    }
-
     public static void mixedIngredients() {
         System.out.println("All ingredients in the mixer were mixed.");
     }
