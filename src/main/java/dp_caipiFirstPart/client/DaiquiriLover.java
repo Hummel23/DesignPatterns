@@ -1,15 +1,20 @@
 package dp_caipiFirstPart.client;
 
 
+import dp_caipiFinal.subsystem.enums.Cocktail;
 import dp_caipiFinal.subsystem.ingredients.*;
 import dp_caipiFinal.subsystem.tools.Mixer;
+import dp_caipiFirstPart.client.view.StepsOfCocktaillover;
 
 import java.util.List;
 
+import static dp_caipiFinal.subsystem.enums.Cocktail.DAIQUIRI;
 import static dp_caipiFinal.subsystem.enums.IngredientName.*;
 import static dp_caipiFirstPart.client.view.StepsOfCocktaillover.*;
 
 public class DaiquiriLover extends AbstractCocktailLover {
+
+    Cocktail favouriteCocktail = DAIQUIRI;
 
     Erdbeeren erdbeeren;
     Limetten limetten;
@@ -26,20 +31,35 @@ public class DaiquiriLover extends AbstractCocktailLover {
 
         this.erdbeeren = (Erdbeeren) supermarkt.buyIngredient(Erdbeere);
         boughtNewIngredients(Erdbeere.name());
-
         this.limetten = (Limetten) supermarkt.buyIngredient(Limette);
+        boughtNewIngredients(Limette.name());
         this.rohrzucker = (Rohrzucker) supermarkt.buyIngredient(Rohrzucker);
+        boughtNewIngredients(Rohrzucker.name());
         this.minze = (Minze) supermarkt.buyIngredient(Minze);
+        boughtNewIngredients(Minze.name());
         this.crushedIce = (CrushedIce) supermarkt.buyIngredient(CrushedIce);
+        boughtNewIngredients(CrushedIce.name());
         this.rum = (Rum) supermarkt.buyIngredient(Rum);
+        boughtNewIngredients(Rum.name());
         this.limettensaft = (dp_caipiFinal.subsystem.ingredients.Limettensaft) supermarkt.buyIngredient(Limettensaft);
+        boughtNewIngredients(Limettensaft.name());
     }
 
 
     @Override
-    public void prepareCocktail() {
-        super.prepareCocktail();
+    public void prepareCocktail(Cocktail cocktail) {
+        if (cocktail.equals(favouriteCocktail)) {
+            super.prepareCocktail(cocktail);
+            prepareDaiquiri();
+            enjoyCocktail();
+        } else{
+            System.out.println(StepsOfCocktaillover.notAbleToPrepareThisCocktail(cocktail));
+        }
 
+
+    }
+
+    private void prepareDaiquiri() {
         //Erdbeere
         erdbeeren.setPortionSize(6);
         if (erdbeeren.isEnoughForCocktail() == false) {
@@ -104,7 +124,7 @@ public class DaiquiriLover extends AbstractCocktailLover {
 
         mixer.addIngredient(crushedIceForCaipi);
         addedIngredientToMixer(CrushedIce.name());
-        
+
         mixer.mixIngredients();
         mixedIngredients();
 
@@ -125,11 +145,5 @@ public class DaiquiriLover extends AbstractCocktailLover {
 
         cocktailglas.addIngredient(minzeForCaipi);
         addedIngredientToGlas(Minze.name());
-
-    }
-
-    @Override
-    public void enjoyCocktail() {
-        System.out.println(PROSTDAIQUIRI);
     }
 }

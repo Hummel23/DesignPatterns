@@ -1,5 +1,6 @@
 package dp_caipiFirstPart;
 
+import dp_caipiFinal.subsystem.enums.Cocktail;
 import dp_caipiFirstPart.client.CaipiLover;
 import dp_caipiFirstPart.client.DaiquiriLover;
 import dp_caipiFirstPart.client.MojitoLover;
@@ -7,26 +8,22 @@ import dp_caipiFirstPart.client.MojitoLover;
 public class CaipiMain {
 
     public static void main(String[] args) {
+        Cocktail[] cocktails = Cocktail.values();
 
-        CaipiLover caipiLover = new CaipiLover();
 
-        for (int i = 0; i < 10; i++) {
-                caipiLover.prepareCocktail();
-                caipiLover.enjoyCocktail();
+        DaiquiriLover daiquiriLover = new DaiquiriLover();
+        for (Cocktail cocktail : cocktails) {
+            daiquiriLover.prepareCocktail(cocktail);
         }
 
         MojitoLover mojitoLover = new MojitoLover();
-
-        for (int i = 0; i < 10; i++) {
-            mojitoLover.prepareCocktail();
-            mojitoLover.enjoyCocktail();
+        for (Cocktail cocktail : cocktails) {
+            mojitoLover.prepareCocktail(cocktail);
         }
 
-        DaiquiriLover daiquiriLover = new DaiquiriLover();
-
-        for (int i = 0; i < 5; i++) {
-            daiquiriLover.prepareCocktail();
-            daiquiriLover.enjoyCocktail();
+        CaipiLover caipiLover = new CaipiLover();
+        for (Cocktail cocktail : cocktails) {
+            caipiLover.prepareCocktail(cocktail);
         }
     }
 }

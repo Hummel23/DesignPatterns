@@ -1,9 +1,10 @@
 package dp_caipiFirstPart.client.view;
 
+import dp_caipiFinal.subsystem.enums.Cocktail;
+
 public class StepsOfCocktaillover {
 
-
-    public static String PROSTCAIPI = "\n\n" +
+    public static String PROSTCAIPI =
             "                ___0___o__o__o__0________0___o__o__o__0___\n" +
             "                __0___o__o_o_____0______0___o__o_o_____0__\n" +
             "                _0_o___o___o______0____0_o___o___o______0_\n" +
@@ -20,10 +21,10 @@ public class StepsOfCocktaillover {
             "                _________00____________________00_________\n" +
             "                _________00____________________00_________\n" +
             "                _________00____________________00_________\n" +
-            "                _______000000__Prooooooooost__000000_______\n\n";
+            "                _______000000__Prooooooooost__000000_______\n";
 
 
-    public static String PROSTMOJITO = "\n\n" +
+    public static String PROSTMOJITO =
             "__________________________________________________\n" +
             "________________#_________________________________\n" +
             "______________#######_____________________________\n" +
@@ -50,10 +51,10 @@ public class StepsOfCocktaillover {
             "_______________#__##__#______##_#___##____________\n" +
             "_______________#####__#______##_#__###____________\n" +
             "_______________#######################____________\n" +
-            "_______________________########___________________\n\n";
+            "_______________________########___________________\n";
 
 
-    public static String PROSTDAIQUIRI   = "\n\n" +
+    public static String PROSTDAIQUIRI   =
             "………………………………….###.…………………………………………\n" +
             "…………………………..(o)..###.…………………………………\n" +
             "……………………….(…(..(.###.…………………………………\n" +
@@ -68,13 +69,39 @@ public class StepsOfCocktaillover {
             "……………………….xx.………………………………………………………\n" +
             "……………………..xxxx.…………………………………………………\n" +
             "……………………xxxxxx.…………………………………………………\n" +
-            "…………………xxxxxxxxx.……………………………………………\n\n";
+            "…………………xxxxxxxxx.……………………………………………\n";
 
 
 
+
+    public static String notAbleToPrepareThisCocktail(Cocktail cocktail) {
+        return "__________________________________________\n" +
+                "________________§§§§§§§§__________________\n" +
+                "_______________§§_______§§________________\n" +
+                "_________________________§§_______________\n" +
+                "__________________________§§______________\n" +
+                "_________________________§§_______________\n" +
+                "________________________§§________________\n" +
+                "______________________§§__________________\n" +
+                "____________________§§____________________\n" +
+                "__________________§§______________________\n" +
+                "________________§§________________________\n" +
+                "_______________§§_________________________\n" +
+                "______________§§__________________________\n" +
+                "______________§§__________________________\n" +
+                "_______________§§_________________________\n" +
+                "________________§§_______§§_______________\n" +
+                "__________________§§§§§§§§________________\n" +
+                "__________________________________________\n" +
+                "_____________________§§___________________\n" +
+                "____________________§§§§__________________\n" +
+                "_____________________§§___________________\n\n" +
+                "Sorry, I don't know how to prepare a " + cocktail.name() + " ...\n";
+
+    }
 
     public static void boughtNewIngredients(String ingredient) {
-        System.out.println("\n\nNo " + ingredient + " in stock. Buying new one(s).\n\n ");
+        System.out.println("No " + ingredient + " in stock. Buying new one(s).\n ");
     }
 
     public static void addedIngredientToGlas(String ingredient) {
@@ -96,10 +123,9 @@ public class StepsOfCocktaillover {
     public static void crushedWithStoessel(String... ingredients) {
         for (String ingredient : ingredients) {
             System.out.print(ingredient + " ");
-
         }
-
         System.out.println("crushed with stoessel.");
+
     }
 
     public static void pickedNewGlas() {

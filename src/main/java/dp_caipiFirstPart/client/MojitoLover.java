@@ -1,14 +1,19 @@
 package dp_caipiFirstPart.client;
 
 
+import dp_caipiFinal.subsystem.enums.Cocktail;
 import dp_caipiFinal.subsystem.ingredients.*;
 import dp_caipiFinal.subsystem.tools.Stoessel;
+import dp_caipiFirstPart.client.view.StepsOfCocktaillover;
 
+import static dp_caipiFinal.subsystem.enums.Cocktail.MOJITO;
 import static dp_caipiFinal.subsystem.enums.IngredientName.*;
 import static dp_caipiFirstPart.client.view.StepsOfCocktaillover.*;
 
 public class MojitoLover extends AbstractCocktailLover {
-    
+
+    Cocktail favouriteCocktail = MOJITO;
+
     Limetten limetten;
     Rohrzucker rohrzucker;
     Minze minze;
@@ -40,9 +45,17 @@ public class MojitoLover extends AbstractCocktailLover {
     
 
     @Override
-    public void prepareCocktail() {
-        super.prepareCocktail();
+    public void prepareCocktail(Cocktail cocktail) {
+        if (cocktail.equals(favouriteCocktail)) {
+            super.prepareCocktail(cocktail);
+            prepareMojito();
+            enjoyCocktail();
+        } else{
+            System.out.println(StepsOfCocktaillover.notAbleToPrepareThisCocktail(cocktail));
+        }
+    }
 
+    private void prepareMojito() {
         //Limetten
         limetten.setPortionSize(1);
         if (limetten.isEnoughForCocktail() == false) {
@@ -84,11 +97,11 @@ public class MojitoLover extends AbstractCocktailLover {
 
         cocktailglas.addIngredient(minzeForMojito);
         addedIngredientToGlas(Minze.name());
-        
+
         //crush
         stoessel.crush();
         crushedWithStoessel(Minze.name(), Limette.name());
-        
+
         //crushed Ice
         crushedIce.setPortionSize(2);
         if (crushedIce.isEnoughForCocktail() == false) {
@@ -136,11 +149,5 @@ public class MojitoLover extends AbstractCocktailLover {
 
         cocktailglas.addIngredient(strohhalmeForCaipi);
         addedIngredientToGlas(Strohhalm.name());
-
-    }
-
-    @Override
-    public void enjoyCocktail() {
-        System.out.println(PROSTMOJITO);
     }
 }

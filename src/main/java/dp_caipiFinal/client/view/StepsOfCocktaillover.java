@@ -5,7 +5,7 @@ import dp_caipiFinal.subsystem.enums.Cocktail;
 public class StepsOfCocktaillover {
 
 
-    public static String PROSTCAIPI = "\n\n" +
+    public static String PROSTCAIPI =
             "                ___0___o__o__o__0________0___o__o__o__0___\n" +
             "                __0___o__o_o_____0______0___o__o_o_____0__\n" +
             "                _0_o___o___o______0____0_o___o___o______0_\n" +
@@ -22,10 +22,10 @@ public class StepsOfCocktaillover {
             "                _________00____________________00_________\n" +
             "                _________00____________________00_________\n" +
             "                _________00____________________00_________\n" +
-            "                _______000000__Prooooooooost__000000_______\n\n";
+            "                _______000000__Prooooooooost__000000_______\n";
 
 
-    public static String PROSTMOJITO = "\n\n" +
+    public static String PROSTMOJITO =
             "__________________________________________________\n" +
             "________________#_________________________________\n" +
             "______________#######_____________________________\n" +
@@ -52,10 +52,10 @@ public class StepsOfCocktaillover {
             "_______________#__##__#______##_#___##____________\n" +
             "_______________#####__#______##_#__###____________\n" +
             "_______________#######################____________\n" +
-            "_______________________########___________________\n\n";
+            "_______________________########___________________\n";
 
 
-    public static String PROSTDAIQUIRI   = "\n\n" +
+    public static String PROSTDAIQUIRI =
             "………………………………….###.…………………………………………\n" +
             "…………………………..(o)..###.…………………………………\n" +
             "……………………….(…(..(.###.…………………………………\n" +
@@ -70,7 +70,7 @@ public class StepsOfCocktaillover {
             "……………………….xx.………………………………………………………\n" +
             "……………………..xxxx.…………………………………………………\n" +
             "……………………xxxxxx.…………………………………………………\n" +
-            "…………………xxxxxxxxx.……………………………………………\n\n";
+            "…………………xxxxxxxxx.……………………………………………\n";
 
 
     public static void orderedACocktail(Cocktail cocktail) {
