@@ -6,6 +6,4 @@ import dp_caipiFinal.subsystem.enums.Cocktail;
 public class CaipiLover extends AbstractCocktailLover {
 
     Cocktail favouriteCocktail = Cocktail.CAIPI;
-
-
 }

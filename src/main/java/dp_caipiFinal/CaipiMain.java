@@ -18,13 +18,8 @@ public class CaipiMain {
         Cocktail[] cocktails = Cocktail.values();
         for (Cocktail cocktail : cocktails) {
             caipiLover.orderCocktail(cocktail);
-            caipiLover.enjoyCocktail();
-
             mojitoLover.orderCocktail(cocktail);
-            mojitoLover.enjoyCocktail();
-
             daiquiriLover.orderCocktail(cocktail);
-            daiquiriLover.enjoyCocktail();
         }
     }
 }

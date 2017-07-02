@@ -22,10 +22,11 @@ public abstract class AbstractCocktailLover {
     public void orderCocktail(Cocktail cocktail){
         this.orderedCocktail = cocktail;
         barkeeper.prepareCocktail(cocktail);
+        enjoyCocktail();
         StepsOfCocktaillover.orderedACocktail(cocktail);
     }
 
-    public void enjoyCocktail(){
+    private void enjoyCocktail(){
         if (orderedCocktail.equals(CAIPI)) {
             System.out.println(StepsOfCocktaillover.PROSTCAIPI);
         }
