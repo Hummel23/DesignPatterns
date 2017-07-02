@@ -1,6 +1,7 @@
-package dp_caipiFinal.subsystem;
+package dp_caipiFirstPart.subsystem;
 
-import dp_caipiFinal.subsystem.ingredients.*;
+import dp_caipiFirstPart.subsystem.ingredients.*;
+import dp_caipiFirstPart.subsystem.ingredients.AbstractCocktailIngredient;
 
 public class Supermarkt {
 

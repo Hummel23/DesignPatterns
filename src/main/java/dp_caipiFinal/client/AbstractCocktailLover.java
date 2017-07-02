@@ -1,26 +1,22 @@
 package dp_caipiFinal.client;
 
+
 import dp_caipiFinal.client.view.StepsOfCocktaillover;
-import dp_caipiFinal.subsystem.Supermarkt;
-import dp_caipiFinal.subsystem.tools.Glas;
+import dp_caipiFinal.fassade.Barkeeper;
+import dp_caipiFinal.fassade.Cocktail;
 
 public abstract class AbstractCocktailLover {
-    Supermarkt supermarkt;
-    Glas cocktailglas;
+
+    Barkeeper barkeeper;
 
     public AbstractCocktailLover() {
-        supermarkt = new Supermarkt();
-        cocktailglas = new Glas();
+        this.barkeeper = new Barkeeper();
 
     }
 
-    public void prepareCocktail(){
-
-        // Glas
-        if (this.cocktailglas.isFull()) {
-            this.cocktailglas = new Glas();
-        }
-        StepsOfCocktaillover.pickedNewGlas();
+    public void orderCocktail(Cocktail cocktail){
+        barkeeper.prepareCocktail(cocktail);
+        StepsOfCocktaillover.orderedACocktail(cocktail);
     }
 
     public void enjoyCocktail(){

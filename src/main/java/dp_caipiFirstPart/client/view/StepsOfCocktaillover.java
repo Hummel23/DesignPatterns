@@ -1,6 +1,4 @@
-package dp_caipiFinal.client.view;
-
-import dp_caipiFinal.fassade.Cocktail;
+package dp_caipiFirstPart.client.view;
 
 public class StepsOfCocktaillover {
 
@@ -73,7 +71,54 @@ public class StepsOfCocktaillover {
             "…………………xxxxxxxxx.……………………………………………\n\n";
 
 
-    public static void orderedACocktail(Cocktail cocktail) {
-        System.out.println(cocktail.name() + " was ordered.");
+
+
+    public static void boughtNewIngredients(String ingredient) {
+        System.out.println("\n\nNo " + ingredient + " in stock. Buying new one(s).\n\n ");
+    }
+
+    public static void addedIngredientToGlas(String ingredient) {
+        System.out.println(ingredient + " added to cocktail glas.");
+    }
+
+    public static void ingredientMeasured(String ingredient) {
+        System.out.println(ingredient + " measured for Cocktail. ");
+    }
+
+    public static void ingredientWashed(String ingredient) {
+        System.out.println(ingredient + " washed.");
+    }
+
+    public static void ingredientCut(String ingredient) {
+        System.out.println(ingredient + " cut.");
+    }
+
+    public static void crushedWithStoessel(String... ingredients) {
+        for (String ingredient : ingredients) {
+            System.out.print(ingredient + " ");
+
+        }
+
+        System.out.println("crushed with stoessel.");
+    }
+
+    public static void pickedNewGlas() {
+        System.out.println("A new glas was picked.");
+    }
+
+    public static void addedIngredientToMixer(String ingredient) {
+        System.out.println(ingredient + " added to mixer.");
+    }
+
+    public static void limettenSqueezed(int number) {
+        System.out.println(number + " Limetten were squeezed.");
+    }
+
+    public static void mixedIngredients() {
+        System.out.println("All ingredients in the mixer were mixed.");
+    }
+
+    public static void pouredCocktailFromMixerToGlas() {
+        System.out.println("Cocktail was poured from mixer to glas.");
     }
 }

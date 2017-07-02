@@ -3,6 +3,7 @@ package dp_caipiFinal;
 import dp_caipiFinal.client.CaipiLover;
 import dp_caipiFinal.client.DaiquiriLover;
 import dp_caipiFinal.client.MojitoLover;
+import dp_caipiFinal.fassade.Cocktail;
 
 public class CaipiMain {
 
@@ -10,23 +11,21 @@ public class CaipiMain {
 
         CaipiLover caipiLover = new CaipiLover();
 
-        for (int i = 0; i < 10; i++) {
-                caipiLover.prepareCocktail();
-                caipiLover.enjoyCocktail();
-        }
-
         MojitoLover mojitoLover = new MojitoLover();
-
-        for (int i = 0; i < 10; i++) {
-            mojitoLover.prepareCocktail();
-            mojitoLover.enjoyCocktail();
-        }
 
         DaiquiriLover daiquiriLover = new DaiquiriLover();
 
-        for (int i = 0; i < 5; i++) {
-            daiquiriLover.prepareCocktail();
+        Cocktail[] cocktails = Cocktail.values();
+        for (Cocktail cocktail : cocktails) {
+            caipiLover.orderCocktail(cocktail);
+            caipiLover.enjoyCocktail();
+
+            mojitoLover.orderCocktail(cocktail);
+            mojitoLover.enjoyCocktail();
+
+            daiquiriLover.orderCocktail(cocktail);
             daiquiriLover.enjoyCocktail();
         }
+
     }
 }
